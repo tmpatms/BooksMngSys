@@ -1,18 +1,15 @@
 package org.ddd.service.impl;
 
-import org.apache.commons.logging.LogFactory;
 import org.ddd.constant.ResponseConstant;
 import org.ddd.constant.UserConstant;
 import org.ddd.entity.User;
 import org.ddd.mapper.UserMapper;
 import org.ddd.protocol.*;
+import org.ddd.protocol.user.*;
 import org.ddd.service.UserServiceEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

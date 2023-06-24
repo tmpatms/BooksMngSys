@@ -1,4 +1,4 @@
-package org.ddd.protocol;
+package org.ddd.protocol.user;
 
 import lombok.Data;
 
@@ -7,10 +7,8 @@ import lombok.Data;
  * @date 2023/06/23
  */
 @Data
-public class LoginUser {
+public class DeleteUser {
 
     private Long id;
-
-    private String password;
 
 }

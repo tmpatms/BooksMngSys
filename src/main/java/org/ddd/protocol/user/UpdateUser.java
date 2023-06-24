@@ -1,4 +1,4 @@
-package org.ddd.protocol;
+package org.ddd.protocol.user;
 
 import lombok.Data;
 

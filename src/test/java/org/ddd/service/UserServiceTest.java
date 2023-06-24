@@ -1,18 +1,12 @@
 package org.ddd.service;
 
-import org.ddd.entity.User;
-import org.ddd.protocol.LoginUser;
-import org.ddd.protocol.RegisterUser;
+import org.ddd.protocol.user.LoginUser;
+import org.ddd.protocol.user.RegisterUser;
 import org.ddd.protocol.Response;
-import org.ddd.protocol.UpdateUser;
-import org.ddd.service.UserServiceEngine;
-import org.ddd.service.impl.UserServiceImpl;
+import org.ddd.protocol.user.UpdateUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.availability.ReadinessState;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 /**
  * @author dudaidong
@@ -28,7 +22,7 @@ public class UserServiceTest {
     public void TestLogin() {
         LoginUser loginUser = new LoginUser();
         loginUser.setId(1L);
-        loginUser.setPassword("test1234");
+        loginUser.setPassword("test123123");
 
         Response response = userServiceEngine.login(loginUser);
         System.out.println(response);

@@ -1,7 +1,7 @@
 package org.ddd.service;
 
-import org.apache.ibatis.annotations.Update;
 import org.ddd.protocol.*;
+import org.ddd.protocol.user.*;
 
 /**
  * @author dudaidong
