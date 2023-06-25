@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author dudaidong
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserServiceEngine {
     }
 
     @Override
-    public Response login(LoginUser userInfo) {
+    public  Response login(LoginUser userInfo) {
         Response response = new Response();
 
         User user = this.getUserIfExists(userInfo.getId());
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserServiceEngine {
                 response.setMsg(ResponseConstant.PASSWORD_NOT_MATCHED);
             } else {
                 response.setStatus(ResponseConstant.SUCCESS);
-                response.setMsg(ResponseConstant.LOGIN_SUCCESS);
+                response.setMsg(user.getIdentity());
             }
         }
 
@@ -56,6 +57,8 @@ public class UserServiceImpl implements UserServiceEngine {
         Response response = new Response();
 
         User user = new User();
+        Long id = UUID.randomUUID().getMostSignificantBits();
+        user.setId(id);
         user.setUserName(userInfo.getUserName());
         user.setPassword(userInfo.getPassword());
         user.setTelephone(userInfo.getTelephone());
@@ -65,7 +68,7 @@ public class UserServiceImpl implements UserServiceEngine {
 
         if (insertedNum >= 1) {
             response.setStatus(ResponseConstant.SUCCESS);
-            response.setMsg("Insert user success.");
+            response.setMsg(id.toString());
         } else {
             response.setStatus(ResponseConstant.FAIL);
             response.setMsg("Insert user fail.");

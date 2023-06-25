@@ -5,7 +5,6 @@ import org.ddd.constant.BookConstant;
 import org.ddd.constant.ResponseConstant;
 import org.ddd.entity.Book;
 import org.ddd.mapper.BookMapper;
-import org.ddd.mapper.UserMapper;
 import org.ddd.protocol.Response;
 import org.ddd.protocol.book.*;
 import org.ddd.service.BookServiceEngine;

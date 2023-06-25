@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2023/06/23
  */
 @Data
-public class Response {
+public class Response<T> {
 
     private Integer status;
 

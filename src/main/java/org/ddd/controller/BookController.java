@@ -1,11 +1,15 @@
 package org.ddd.controller;
 
+import org.ddd.constant.ResponseConstant;
+import org.ddd.entity.User;
 import org.ddd.protocol.Response;
 import org.ddd.protocol.book.*;
 import org.ddd.service.BookServiceEngine;
-import org.ddd.service.UserServiceEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author dudaidong
@@ -26,15 +30,40 @@ public class BookController {
 
     @PostMapping("/addbook")
     public Response addBook(@RequestParam("name") String name,
-                            @RequestParam("position") String position) {
+                            @RequestParam("position") String position,
+                            HttpServletRequest request) {
+        if (!this.checkAdmin(request)) {
+            Response response = new Response<>();
+            response.setStatus(ResponseConstant.FAIL);
+            response.setMsg("No priority.");
+
+            return response;
+        }
         AddBook addBook = new AddBook();
         addBook.setName(name);
         addBook.setPosition(position);
         return bookServiceEngine.addBook(addBook);
     }
 
+    private boolean checkAdmin(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("user");
+
+        System.out.println("check admin user: " + user.toString());
+
+        return ((User) user).getIdentity().equals("admin");
+    }
+
     @PostMapping("/removebook")
-    public Response removeBook(@RequestParam("id") Long id) {
+    public Response removeBook(@RequestParam("id") Long id,
+                               HttpServletRequest request) {
+        if (!this.checkAdmin(request)) {
+            Response response = new Response<>();
+            response.setStatus(ResponseConstant.FAIL);
+            response.setMsg("No priority.");
+
+            return response;
+        }
         RemoveBook removeBook = new RemoveBook();
         removeBook.setId(id);
         return bookServiceEngine.removeBook(removeBook);

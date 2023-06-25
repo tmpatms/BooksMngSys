@@ -24,7 +24,7 @@ public class UserServiceTest {
         loginUser.setId(1L);
         loginUser.setPassword("test123123");
 
-        Response response = userServiceEngine.login(loginUser);
+        Response<T> response = userServiceEngine.login(loginUser);
         System.out.println(response);
     }
 
@@ -34,7 +34,7 @@ public class UserServiceTest {
         registerUser.setUserName("test2");
         registerUser.setPassword("test2");
         registerUser.setTelephone("test2");
-        Response response = userServiceEngine.registerUser(registerUser);
+        Response<T> response = userServiceEngine.registerUser(registerUser);
         System.out.println(response);
     }
 
@@ -45,7 +45,7 @@ public class UserServiceTest {
         updateUser.setUserName("daidong");
         updateUser.setPassword("test123123");
         updateUser.setTelephone("test123123");
-        Response response = userServiceEngine.updateUserInfo(updateUser);
+        Response<T> response = userServiceEngine.updateUserInfo(updateUser);
         System.out.println(response);
     }
 
